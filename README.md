@@ -87,3 +87,9 @@ Domain blocklist at `~/.clawbrowser/blocked_domains.txt` — one domain per line
 - PyQt6
 - PyQt6-WebEngine
 - Linux (tested on Ubuntu/Pop!_OS). macOS should work. Windows untested.
+
+## Notes
+
+- Requires Python 3.10–3.12 (PyQt6-WebEngine not yet available for 3.13+)
+- On Linux with multiple Python installs, use `/usr/bin/python3` explicitly if the default python3 is newer
+- Tested on Ubuntu 22.04 / Pop!_OS
