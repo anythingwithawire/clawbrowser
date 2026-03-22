@@ -449,6 +449,15 @@ class BrowserWindow(QMainWindow):
         layout.setContentsMargins(0, 0, 0, 0)
         layout.setSpacing(0)
 
+        # Menu bar
+        menu_bar = self.menuBar()
+        file_menu = menu_bar.addMenu("&File")
+
+        new_tab_action = QAction("New Tab", self)
+        new_tab_action.setShortcut(QKeySequence("Ctrl+T"))
+        new_tab_action.triggered.connect(lambda: self.new_tab())
+        file_menu.addAction(new_tab_action)
+
         # Navigation toolbar
         nav = QToolBar("Navigation")
         nav.setMovable(False)
@@ -508,7 +517,6 @@ class BrowserWindow(QMainWindow):
         signals.zoom_sig.connect(self._handle_zoom)
 
     def _apply_shortcuts(self):
-        QShortcut(QKeySequence("Ctrl+T"), self).activated.connect(lambda: self.new_tab())
         QShortcut(QKeySequence("Ctrl+W"), self).activated.connect(lambda: self.close_tab(self.tabs.currentIndex()))
         QShortcut(QKeySequence("Ctrl+Tab"), self).activated.connect(self._next_tab)
         QShortcut(QKeySequence("Ctrl+Shift+Tab"), self).activated.connect(self._prev_tab)
